@@ -128,7 +128,7 @@ def loopDiffusion(icase, iflux, title):
     plt.plot(x,u0,'-k',label='Initial')
     for s in diffusionvalues:
         [u, u0] = solve(icase, iflux, tf, s, n, u, u0)
-        plt.plot(x,u,'-o',ms=5,label=r'$\sigma = %4.3f$'%s)
+        plt.plot(x,u,'-o',ms=5,label=r'$\sigma^2 = %4.3f$'%s)
     if(icase=='FlatSine'): plt.axis([-2,5,-1.2,1.2])
     if(icase=='Triangle'): plt.axis([-2,5,-0.1,1.2])
     plt.grid(alpha=0.3); plt.legend()
@@ -158,7 +158,7 @@ def loopDX(icase, iflux, title):
     u = np.empty(n,dtype=np.float64())
     u0 = np.empty(n,dtype=np.float64())
     tf = 1.0
-    s  = 0
+    s  = 0.005
     [u, u0] = solve(icase, iflux, tf, s, n, u, u0)
 
     plt.figure(); plt.title(title)
